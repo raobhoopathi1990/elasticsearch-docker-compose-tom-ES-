@@ -29,9 +29,10 @@ USER elasticsearch
 ENV JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.262.b10-0.el8_2.x86_64/jre"
 RUN export PATH=$JAVA_HOME/bin:$PATH
 ENV PATH /opt/elasticsearch/bin:$PATH
+RUN chmod +x /opt/elasticsearch/bin/entrypoint.sh
 EXPOSE 9200 9300
-ENTRYPOINT ["sh","/opt/elasticsearch/bin/entrypoint.sh"]
-CMD ["entrypoint.sh"]
+#ENTRYPOINT ["bash","/opt/elasticsearch/bin/entrypoint.sh"]
+CMD ["elasticsearch"]
 
 *************************************************** elasticsearch.yml********************************************************************
 network.host: 0.0.0.0
