@@ -1,0 +1,24 @@
+version: '2'
+services:
+   tomcat:
+     container_name: tomcatnew
+     image: bhupathirao/tomcat182020:latest
+     ports:
+       - 8080:8080
+     volumes:
+       - /opt/tomcat/tomcat.backup:/home/tomcat
+       - /opt/tomcat/tomcat.backup:/tmp/apache-tomcat-8.5.57/logs
+     networks:
+       - net
+   elasticsearch:
+     container_name: elasticsearchnew
+     image: bhupathirao/elasticsearch7.9.0:latest
+     ports:
+       - 9200:9200
+       - 9300:9300
+     volumes:
+       - /opt/elasticsearch/es7.9.0.backup:/opt/elasticsearch/logs
+     networks:
+       - net
+networks:
+  net:
